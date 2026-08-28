@@ -1,0 +1,43 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+    implementation 'org.apache.poi:poi-ooxml:5.5.1'
+    runtimeOnly 'org.apache.logging.log4j:log4j-to-slf4j:2.24.3'
+    runtimeOnly 'org.slf4j:slf4j-nop:2.0.16'
+
+    testImplementation platform('org.junit:junit-bom:5.11.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+sourceSets {
+    main {
+        java.srcDirs = ['ejercicios/src/main/java', 'tps/src/main/java']
+    }
+    test {
+        java.srcDirs = ['ejercicios/src/test/java', 'tps/src/test/java']
+    }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging { events "passed", "skipped", "failed" }
+}
+
+application {
+    mainClass = 'ar.uba.fi.cb100.material.i01_intro.HolaCB100'
+}
