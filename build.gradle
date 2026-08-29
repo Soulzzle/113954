@@ -26,10 +26,10 @@ dependencies {
 
 sourceSets {
     main {
-        java.srcDirs = ['ejercicios/src/main/java', 'tps/src/main/java']
+        java.srcDirs = ['ejercicios', 'tps']
     }
     test {
-        java.srcDirs = ['ejercicios/src/test/java', 'tps/src/test/java']
+        java.srcDirs = ['ejercicios/tests', 'tps/tests']
     }
 }
 
