@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// Par o impar. Dado un entero, indicá si es par o impar usando el operador %.
 public class ParOImpar {
     /**
      * esPar evalua si el resto de la división del número es igual a 0.

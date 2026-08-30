@@ -1,3 +1,4 @@
+// Hola con tu nombre. Escribí un programa que imprima un saludo con tu nombre y tu legajo.
 public class saludo {
     public static String saludar(String nombre, int padron){
         return "Hola, soy " + nombre + " y mi padrón es " + String.valueOf(padron);
