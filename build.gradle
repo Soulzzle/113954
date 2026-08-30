@@ -27,6 +27,7 @@ dependencies {
 sourceSets {
     main {
         java.srcDirs = ['ejercicios', 'tps']
+        java.exclude '**/tests/**'
     }
     test {
         java.srcDirs = ['ejercicios/tests', 'tps/tests']

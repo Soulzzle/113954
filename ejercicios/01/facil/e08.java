@@ -1,5 +1,5 @@
 // Promedio de un arreglo. Dado un double[], calculá el promedio con un for-each.
-public class PromedioArreglo {
+class PromedioArreglo {
     
     /**
      * promedioArreglo recibe un arreglo de doubles y devuelve el promedio.

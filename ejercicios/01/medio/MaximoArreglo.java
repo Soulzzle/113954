@@ -4,14 +4,14 @@ public class MaximoArreglo {
     /**
      * maximo devuelve el número mas alto del arreglo.
      * @param v Arreglo tipo int[].
-     * @return maximo int del arreglo.
+     * @return maximo int del arreglo, o -1 si el arreglo es null o está vacío.
      */
     public static int maximo(int[] v){
-        if(v == null || v.length == 0){
+        if (v == null || v.length == 0){
             return -1;
         }
         int maximo = v[0];
-        for(int i=1; i<v.length; i++){
+        for (int i=1; i<v.length; i++){
             if (v[i]>maximo){
                 maximo = v[i];
             }
