@@ -1,5 +1,5 @@
 // Tabla de multiplicar. Con un for, imprimí la tabla del número que se pase por args.
-class TablaMultiplicar {
+public class TablaMultiplicar {
     
     /**
      * imprimirTabla imprime por consola la tabla del número recibido.

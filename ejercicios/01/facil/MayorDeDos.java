@@ -1,6 +1,6 @@
 
 // Mayor de dos. Escribí un método int mayor(int a, int b) que devuelva el mayor.
-class MayorDeDos {
+public class MayorDeDos {
     static final int IGUALES = -1;
     
     /**

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 // Par o impar. Dado un entero, indicá si es par o impar usando el operador %.
-class ParOImpar {
+public class ParOImpar {
     /**
      * esPar evalua si el resto de la división del número es igual a 0.
      * @param n número a evaluar.
@@ -20,5 +20,6 @@ class ParOImpar {
         } else{
             System.out.println("El número " + n + " es impar.");
         }
+        scanner.close();
     }
 }
