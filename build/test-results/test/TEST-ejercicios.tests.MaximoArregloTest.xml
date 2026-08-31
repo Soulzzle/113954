@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ejercicios.tests.MaximoArregloTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-08-30T22:59:02.261Z" hostname="SOULZ" time="0.032">
+  <properties/>
+  <testcase name="devuelveElUnicoElementoCuandoHayUnSoloElemento()" classname="ejercicios.tests.MaximoArregloTest" time="0.016"/>
+  <testcase name="devuelveMenosUnoSiElArregloEsVacio()" classname="ejercicios.tests.MaximoArregloTest" time="0.0"/>
+  <testcase name="devuelveMenosUnoSiElArregloEsNull()" classname="ejercicios.tests.MaximoArregloTest" time="0.0"/>
+  <testcase name="devuelveElMayorElementoDelArreglo()" classname="ejercicios.tests.MaximoArregloTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
