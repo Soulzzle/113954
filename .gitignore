@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+.gradle-cache/
+**/build/
+**/bin/
+
+# IntelliJ / VS Code / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.log
+
+# local generated docs or temp files
+*.tmp
+*.bak
