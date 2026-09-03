@@ -1,18 +1,24 @@
 # Gradle
 .gradle/
 .gradle-cache/
+gradle.properties
 **/build/
 **/bin/
 
-# IntelliJ / VS Code / OS
+# IDE / OS
 .idea/
 .vscode/
+.classpath
+.project
+.settings/
 .DS_Store
 Thumbs.db
 
 # Java
 *.class
 *.log
+hs_err_pid*
+replay_pid*
 
 # local generated docs or temp files
 *.tmp
