@@ -1,23 +1,29 @@
 package tp1;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 public record Prestamo(LocalDate retiro, int padron, String socio, String isbn, String titulo, LocalDate devolucion){
-    // Valida en el constructor compacto: un Prestamo mal formado NO debe existir.
-    //  - socio, isbn y titulo no pueden ser null ni vacios
-    //  - padron debe ser positivo
-    //  - devolucion puede ser null (pendiente), pero si no lo es,
-    //    no puede ser anterior a retiro
+
+    private static final int DEUDA_POR_DIA = 150;
+    private static final int TOPE_MULTA = 3000;
+
     //CONSTRUCTORES -------------------------------------------------------------------------------------------
 
     public Prestamo{
-        if (socio == null || socio.isBlank()){
+        Objects.requireNonNull(retiro, "El dato retiro no puede ser nulo.");
+        Objects.requireNonNull(socio, "El dato socio no puede ser nulo.");
+        Objects.requireNonNull(isbn, "El dato isbn no puede ser nulo.");
+        Objects.requireNonNull(titulo, "El dato titulo no puede ser nulo.");
+
+        if (socio.isBlank()){
             throw new IllegalArgumentException("El dato socio no puede estar vacío.");
         }
-        if (isbn == null || isbn.isBlank()){
+        if (isbn.isBlank()){
             throw new IllegalArgumentException("El dato isbn no puede estar vacío.");
         }
-        if (titulo == null || titulo.isBlank()){
+        if (titulo.isBlank()){
             throw new IllegalArgumentException("El dato titulo no puede estar vacío.");
         }
         if (padron <= 0){
@@ -35,14 +41,20 @@ public record Prestamo(LocalDate retiro, int padron, String socio, String isbn, 
         return devolucion == null;
     }
     public LocalDate vencimiento(){ // retiro + 14 dias
-        LocalDate fechaVencimiento = retiro.plusDays(14);
-        return fechaVencimiento;
+        return retiro.plusDays(14);
     }
-    public int diasDeAtraso(LocalDate corte){ // siempre >= 0
-        int dias = ChronoUnit.DAYS.between(retiro, devolucion);
-        return dias;
+    public int diasDeAtraso(LocalDate corte){ // siempre >= {
+        long dias;
+        if (estaPendiente()){
+            dias = ChronoUnit.DAYS.between(vencimiento(), corte);
+        } else{
+            dias = ChronoUnit.DAYS.between(vencimiento(), devolucion);
+        }
+        return Math.max((int) dias, 0);
     }
     public int multa(LocalDate corte){ // 150 por dia, tope 3000
-        
+        int diasAtraso = diasDeAtraso(corte);
+        int multa = DEUDA_POR_DIA * diasAtraso;
+        return Math.min(multa, TOPE_MULTA);
     }
 }
