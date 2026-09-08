@@ -1,5 +1,5 @@
 package tp1;
-
+/* 
 import java.io.IOException;
 
 public class LineaInvalidaException extends RuntimeException {
@@ -17,4 +17,5 @@ public class LectorDePrestamos {
     public static ResultadoDeCarga cargar(Path archivo) throws IOException {
 
     }
-}
+} 
+*/

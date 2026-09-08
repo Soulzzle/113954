@@ -16,43 +16,43 @@ class PrestamoTest {
     @Test
     void rechazaRetiroNulo() {
         assertThrows(NullPointerException.class,
-                () -> new Prestamo(null, 12345, "Ada Lovelace", "978-1", "Libro", null));
+                () -> new Prestamo(null, 12345, "Juan Perez", "978-1", "Algoritmos y programacion", null));
     }
 
     @Test
-    void rechazaSocioNuloOVacio() {
+    void validaSocio() {
         assertThrows(NullPointerException.class,
-                () -> new Prestamo(RETIRO, 12345, null, "978-1", "Libro", null));
+                () -> new Prestamo(RETIRO, 12345, null, "978-1", "Algoritmos y programacion", null));
         assertThrows(IllegalArgumentException.class,
-                () -> new Prestamo(RETIRO, 12345, "   ", "978-1", "Libro", null));
+                () -> new Prestamo(RETIRO, 12345, "   ", "978-1", "Algoritmos y programacion", null));
     }
 
     @Test
-    void rechazaIsbnNuloOVacio() {
+    void validaIsbn() {
         assertThrows(NullPointerException.class,
-                () -> new Prestamo(RETIRO, 12345, "Ada Lovelace", null, "Libro", null));
+                () -> new Prestamo(RETIRO, 12345, "Juan Perez", null, "Algoritmos y programacion", null));
         assertThrows(IllegalArgumentException.class,
-                () -> new Prestamo(RETIRO, 12345, "Ada Lovelace", " \t", "Libro", null));
+                () -> new Prestamo(RETIRO, 12345, "Juan Perez", " \t", "Algoritmos y programacion", null));
     }
 
     @Test
-    void rechazaTituloNuloOVacio() {
+    void validaTitulo() {
         assertThrows(NullPointerException.class,
-                () -> new Prestamo(RETIRO, 12345, "Ada Lovelace", "978-1", null, null));
+                () -> new Prestamo(RETIRO, 12345, "Juan Perez", "978-1", null, null));
         assertThrows(IllegalArgumentException.class,
-                () -> new Prestamo(RETIRO, 12345, "Ada Lovelace", "978-1", " \n", null));
+                () -> new Prestamo(RETIRO, 12345, "Juan Perez", "978-1", " \n", null));
     }
 
     @Test
-    void rechazaPadronNoPositivo() {
+    void validaPadron() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Prestamo(RETIRO, 0, "Ada Lovelace", "978-1", "Libro", null));
+                () -> new Prestamo(RETIRO, 0, "Juan Perez", "978-1", "Organizacion del computador", null));
         assertThrows(IllegalArgumentException.class,
-                () -> new Prestamo(RETIRO, -1, "Ada Lovelace", "978-1", "Libro", null));
+                () -> new Prestamo(RETIRO, -1, "Juan Perez", "978-1", "Organizacion del computador", null));
     }
 
     @Test
-    void permiteDevolucionNulaYRechazaDevolucionAnteriorAlRetiro() {
+    void rechazaDevolucionInvalida() {
         Prestamo pendiente = prestamo(null);
 
         assertTrue(pendiente.estaPendiente());
@@ -61,12 +61,12 @@ class PrestamoTest {
     }
 
     @Test
-    void vencimientoEsCatorceDiasDespuesDelRetiro() {
+    void calculaVencimiento() {
         assertEquals(RETIRO.plusDays(14), prestamo(null).vencimiento());
     }
 
     @Test
-    void permiteDevolucionEnLaFechaDeRetiro() {
+    void aceptaDevolucionElDiaDelRetiro() {
         Prestamo prestamo = prestamo(RETIRO);
 
         assertFalse(prestamo.estaPendiente());
@@ -74,7 +74,7 @@ class PrestamoTest {
     }
 
     @Test
-    void prestamoDevueltoEnFechaNoTieneAtrasoNiMulta() {
+    void prestamoEnFechaNoTieneMulta() {
         Prestamo prestamo = prestamo(RETIRO.plusDays(14));
 
         assertFalse(prestamo.estaPendiente());
@@ -83,7 +83,7 @@ class PrestamoTest {
     }
 
     @Test
-    void atrasoComienzaAlDiaSiguienteDelVencimiento() {
+    void calculaAtrasoDesdeVencimiento() {
         Prestamo prestamo = prestamo(null);
 
         assertEquals(0, prestamo.diasDeAtraso(RETIRO.plusDays(14)));
@@ -92,7 +92,7 @@ class PrestamoTest {
     }
 
     @Test
-    void prestamoDevueltoAntesDelVencimientoNoTieneAtraso() {
+    void devolucionAnticipadaNoTieneAtraso() {
         Prestamo prestamo = prestamo(RETIRO.plusDays(7));
 
         assertEquals(0, prestamo.diasDeAtraso(RETIRO.plusDays(30)));
@@ -100,7 +100,7 @@ class PrestamoTest {
     }
 
     @Test
-    void prestamoDevueltoConAtrasoCalculaDiasYMulta() {
+    void calculaAtrasoYMulta() {
         Prestamo prestamo = prestamo(RETIRO.plusDays(17));
 
         assertEquals(3, prestamo.diasDeAtraso(RETIRO.plusDays(40)));
@@ -108,7 +108,7 @@ class PrestamoTest {
     }
 
     @Test
-    void prestamoDevueltoCalculaAtrasoConLaDevolucionAunqueElCorteSeaAnterior() {
+    void usaDevolucionAunqueCorteSeaAnterior() {
         Prestamo prestamo = prestamo(RETIRO.plusDays(17));
 
         assertEquals(3, prestamo.diasDeAtraso(RETIRO.plusDays(10)));
@@ -116,7 +116,7 @@ class PrestamoTest {
     }
 
     @Test
-    void prestamoPendienteCalculaAtrasoHastaLaFechaDeCorte() {
+    void pendienteUsaFechaDeCorte() {
         Prestamo prestamo = prestamo(null);
 
         assertEquals(6, prestamo.diasDeAtraso(RETIRO.plusDays(20)));
@@ -124,7 +124,7 @@ class PrestamoTest {
     }
 
     @Test
-    void prestamoPendienteAntesDelVencimientoNoTieneAtraso() {
+    void pendienteSinAtraso() {
         Prestamo prestamo = prestamo(null);
 
         assertEquals(0, prestamo.diasDeAtraso(RETIRO.plusDays(10)));
@@ -132,7 +132,7 @@ class PrestamoTest {
     }
 
     @Test
-    void multaTieneUnTopeDeTresMilPesos() {
+    void limitaMulta() {
         Prestamo prestamo = prestamo(null);
 
         assertEquals(3000, prestamo.multa(RETIRO.plusDays(34)));
@@ -140,6 +140,6 @@ class PrestamoTest {
     }
 
     private Prestamo prestamo(LocalDate devolucion) {
-        return new Prestamo(RETIRO, 12345, "Ada Lovelace", "978-1", "Libro", devolucion);
+        return new Prestamo(RETIRO, 12345, "Juan Perez", "978-1", "Algoritmos y programacion", devolucion);
     }
 }
