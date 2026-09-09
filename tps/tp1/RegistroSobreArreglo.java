@@ -71,11 +71,22 @@ public class RegistroSobreArreglo implements RegistroDePrestamos {
         return padrones;
     }
 
+    @Override
     public Prestamo[] prestamosDe(int padron){ // arreglo vacio si no hay ninguno
+        Prestamo[] prestamos = new Prestamo[this.cantidad];
+        int topePrestamos = 0;
+        for (int i = 0; i < this.cantidad; i++){
+            if (this.prestamos[i].padron() == padron){
+                prestamos[topePrestamos] = this.prestamos[i];
+                topePrestamos++;
+            }
+        }
 
+        prestamos = Arrays.copyOf(prestamos, topePrestamos);
+        return prestamos;
     }
 
-    public String[] titulosMasPedidos(int n){
-
+    public String[] titulosMasPedidos(int n){ // los n mas pedidos, desempate alfabetico
+        
     }
 }
