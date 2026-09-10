@@ -87,6 +87,10 @@ public class RegistroSobreArreglo implements RegistroDePrestamos {
     }
 
     public String[] titulosMasPedidos(int n){ // los n mas pedidos, desempate alfabetico
+        String[] titulos = new String[n];
         
+        
+        
+        return titulos;
     }
 }
