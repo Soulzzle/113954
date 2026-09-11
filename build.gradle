@@ -40,5 +40,9 @@ test {
 }
 
 application {
-    mainClass = 'ar.uba.fi.cb100.material.i01_intro.HolaCB100'
+    mainClass = 'tp1.Tp1'
+}
+
+tasks.named('run') {
+    workingDir = file('tps/tp1')
 }

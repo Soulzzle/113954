@@ -5,6 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 
+/**
+ * ExportadorTxt escribe el reporte de multas en el formato de texto solicitado.
+ */
 public class ExportadorTxt implements ExportadorDeReporte {
 
     // ATRIBUTOS
@@ -37,8 +40,9 @@ public class ExportadorTxt implements ExportadorDeReporte {
         sb.append("Fecha de corte: ").append(this.corte).append("\n\n");
         
         // arma los titulos de las columnas
-        sb.append(String.format("%-8s %-30s %-10s %-11s %-7s %s\n", 
+        sb.append(String.format("%-7s %-20s %10s %11s %7s %s\n",
             "Padron", "Socio", "Prestamos", "DiasAtraso", "Multa", "Estado"));
+        sb.append("--------------------------------------------------------------------\n");
             
         int totalPrestamos = 0;
         int totalAtraso = 0;
@@ -47,7 +51,7 @@ public class ExportadorTxt implements ExportadorDeReporte {
         // arma las filas de socios
         for (int i = 0; i < filas.length; i++) {
             FilaDeSocio f = filas[i];
-            sb.append(String.format("%-8d %-30s %-10d %-11d %-7d %s\n", 
+            sb.append(String.format("%-7d %-20s %10d %11d %7d %s\n",
                 f.padron(), f.socio(), f.prestamos(), f.diasDeAtraso(), f.multa(), f.estado()));
             
             totalPrestamos += f.prestamos();
@@ -55,9 +59,9 @@ public class ExportadorTxt implements ExportadorDeReporte {
             totalMulta += f.multa();
         }
         
-        // arma fila de totales
-        sb.append("\n");
-        sb.append(String.format("%-39s %-10d %-11d %-7d\n\n", 
+        // separa las filas de socios de la fila de totales
+        sb.append("--------------------------------------------------------------------\n");
+        sb.append(String.format("%-29s %10d %11d %7d\n\n",
             "TOTALES", totalPrestamos, totalAtraso, totalMulta));
             
         // Ranking de libros

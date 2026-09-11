@@ -69,7 +69,7 @@ public class Reporteador {
             }
             
             // pone el formato pedido específico
-            reporte[i] = String.format("%d. %-35s %d", i+1, titulos[i], cantidadPedida);
+            reporte[i] = String.format("%2d. %s %d", i + 1, titulos[i], cantidadPedida);
         }
 
         return reporte;

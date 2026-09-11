@@ -16,6 +16,11 @@ public class Tp1 {
     private static final LocalDate CORTE_POR_DEFECTO = LocalDate.parse("2026-05-04");
 
     // METODOS DE COMPORTAMIENTO
+    /**
+     * Ejecuta la carga del archivo y genera los reportes de texto y CSV.
+     * @param args archivo de entrada y fecha de corte, ambos opcionales.
+     * @throws IOException si no se puede leer el archivo o escribir un reporte.
+     */
     public static void main(String[] args) throws IOException {
         String rutaEntrada = ENTRADA_POR_DEFECTO;
         LocalDate fechaCorte = CORTE_POR_DEFECTO;
@@ -55,9 +60,8 @@ public class Tp1 {
         int descartadas = res.errores().length;
         int validas = res.lineasDeDatos() - descartadas;
 
-        System.out.println("Lineas de datos: " + res.lineasDeDatos());
-        System.out.println("validas: " + validas);
-        System.out.println("descartadas: " + descartadas);
+        System.out.println(String.format("Lineas de datos: %d | validas: %d | descartadas: %d",
+            res.lineasDeDatos(), validas, descartadas));
 
         for (int i = 0; i < res.errores().length; i++) {
             System.out.println(res.errores()[i]);

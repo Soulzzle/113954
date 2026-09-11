@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * LectorDePrestamos se encarga de leer el archivo físico en disco, 
@@ -23,15 +22,15 @@ public class LectorDePrestamos {
      * @throws IOException si ocurre un error de lectura al intentar acceder al archivo en el disco.
      */
     public static ResultadoDeCarga cargar(Path archivo) throws IOException {
-        List<String> lineas = Files.readAllLines(archivo);
+        String[] lineas = Files.readAllLines(archivo).toArray(new String[0]);
         RegistroDePrestamos registro = new RegistroSobreArreglo();
         
         String[] errores = new String[8];
         int topeErrores = 0;
         int lineasDeDatos = 0;
 
-        for (int i = 0; i < lineas.size(); i++) {
-            String linea = lineas.get(i);
+        for (int i = 0; i < lineas.length; i++) {
+            String linea = lineas[i];
             int numLineaReal = i + 1; 
 
             // todas las lineas en blanco o que arrancan con # se ignoran.

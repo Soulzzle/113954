@@ -3,6 +3,9 @@ package tp1;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * RegistroSobreArreglo implementa el TDA de préstamos con un arreglo redimensionable.
+ */
 public class RegistroSobreArreglo implements RegistroDePrestamos {
     
     private static final int CAPACIDAD_INICIAL = 8;
@@ -14,6 +17,9 @@ public class RegistroSobreArreglo implements RegistroDePrestamos {
 
     //CONSTRUCTORES
 
+    /**
+     * Construye un registro vacío con la capacidad inicial requerida.
+     */
     public RegistroSobreArreglo(){
         this.prestamos = new Prestamo[CAPACIDAD_INICIAL];
         this.cantidad = 0;
