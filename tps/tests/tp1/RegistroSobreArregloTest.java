@@ -13,13 +13,13 @@ class RegistroSobreArregloTest {
     private static final LocalDate HOY = LocalDate.of(2026, 9, 1);
 
     @Test
-    void registrarRechazaPrestamoNulo() {
+    void rechazaPrestamoNulo() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
         assertThrows(NullPointerException.class, () -> registro.registrar(null));
     }
 
     @Test
-    void registrarSuperaCapacidadInicialSinPerderDatos() {
+    void ampliaCapacidad() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
     
         for (int i = 0; i < 20; i++) {
@@ -31,7 +31,7 @@ class RegistroSobreArregloTest {
     }
 
     @Test
-    void obtenerLanzaExcepcionSiIndiceEstaFueraDeRango() {
+    void validaIndice() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
         registro.registrar(crearPrestamo(113954, "Algoritmos y Estructuras de Datos"));
 
@@ -41,7 +41,7 @@ class RegistroSobreArregloTest {
     }
 
     @Test
-    void padronesDevuelveListaUnicaEnOrdenDeAparicion() {
+    void padronesUnicos() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
         registro.registrar(crearPrestamo(105, "Organizacion del Computador"));
         registro.registrar(crearPrestamo(102, "Probabilidad y Estadistica B"));
@@ -53,7 +53,7 @@ class RegistroSobreArregloTest {
     }
 
     @Test
-    void prestamosDeFiltraCorrectamentePorPadron() {
+    void filtraPorPadron() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
         registro.registrar(crearPrestamo(105, "Organizacion del Computador"));
         registro.registrar(crearPrestamo(102, "Probabilidad y Estadistica B"));
@@ -69,7 +69,7 @@ class RegistroSobreArregloTest {
     }
 
     @Test
-    void titulosMasPedidosOrdenaPorFrecuenciaYDesempataAlfabeticamente() {
+    void ordenaTitulos() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
         
         // 3 pedidos de Probabilidad
@@ -98,7 +98,7 @@ class RegistroSobreArregloTest {
     }
     
     @Test
-    void titulosMasPedidosSeAdaptaSiSePidenMasTitulosDeLosQueExisten() {
+    void limitaTitulos() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
         registro.registrar(crearPrestamo(1, "Libro random"));
         registro.registrar(crearPrestamo(2, "Libro random"));
