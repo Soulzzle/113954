@@ -1,10 +1,15 @@
 package tp1;
 
 public class LineaInvalidaException extends RuntimeException {
-    public LineaInvalidaException(int numeroDeLinea, String motivo) {
+    
+    private final int numeroDeLinea;
 
+    public LineaInvalidaException(int numeroDeLinea, String motivo) {
+        super(motivo);
+        this.numeroDeLinea = numeroDeLinea;
     }
+
     public int numeroDeLinea() {
-        
+        return this.numeroDeLinea;
     }
 }
