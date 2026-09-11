@@ -3,8 +3,20 @@ package tp1;
 import java.time.LocalDate;
 import java.util.Arrays;
 
+/**
+ * Reporteador se encarga de procesar los datos del registro y 
+ * darles el formato necesario para generar los reportes de salida.
+ */
 public class Reporteador {
 
+    // METODOS DE COMPORTAMIENTO
+    /**
+     * porSocio agrupa todos los préstamos de la biblioteca por padrón, calcula 
+     * las multas totales y el estado de cada socio, y ordena el resultado final.
+     * @param r el registro de préstamos poblado con los datos.
+     * @param corte la fecha utilizada para calcular los días de atraso de los préstamos pendientes.
+     * @return un arreglo de FilaDeSocio ordenado por multa descendente y desempate alfabético.
+     */
     public static FilaDeSocio[] porSocio(RegistroDePrestamos r, LocalDate corte) {
         int[] padrones = r.padrones();
         FilaDeSocio[] filas = new FilaDeSocio[padrones.length];
@@ -36,6 +48,12 @@ public class Reporteador {
         return filas;
     }
 
+    /**
+     * ranking genera las líneas de texto formateadas para el reporte de títulos más pedidos.
+     * @param r el registro de préstamos poblado con los datos.
+     * @param n la cantidad máxima de posiciones a mostrar en el ranking.
+     * @return un arreglo de strings donde cada elemento es una línea del reporte formateada.
+     */
     public static String[] ranking(RegistroDePrestamos r, int n) {
         String[] titulos = r.titulosMasPedidos(n);
         String[] reporte = new String[titulos.length];
