@@ -86,11 +86,40 @@ public class RegistroSobreArreglo implements RegistroDePrestamos {
         return prestamos;
     }
 
+    private static void ordenaTitulosPorCantidad(int[] contador, String[] titulos, int topeTitulos){
+        for (int i = 0; i < topeTitulos; i++){
+            for (int j = 0; j < topeTitulos; j++){
+                                
+            }
+        }
+    }
+
+    @Override
     public String[] titulosMasPedidos(int n){ // los n mas pedidos, desempate alfabetico
-        String[] titulos = new String[n];
+        String[] titulos = new String[this.cantidad];
+        int[] contadores = new int[this.cantidad];
+        int topeTitulos = 0;
         
-        
-        
+        // Primero busco en this.prestamos con un for y escribo todos los títulos, 
+        // sumando a contador (en el índice equivalente a titulos) cada aparición con otro for.
+        for (int i = 0; i < this.cantidad; i++){
+            String tituloActual = this.prestamos[i].titulo();
+            boolean tituloYaAnotado = false;
+            for (int j = 0; j < topeTitulos; j++){
+                if (tituloActual.equals(titulos[j])){
+                    tituloYaAnotado = true;
+                    contadores[j]++;
+                }
+            }
+            if (!tituloYaAnotado){
+                titulos[topeTitulos] = tituloActual;
+                contadores[topeTitulos]++;
+                topeTitulos++;
+            }
+        }
+
+
+
         return titulos;
     }
 }
