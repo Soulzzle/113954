@@ -88,8 +88,23 @@ public class RegistroSobreArreglo implements RegistroDePrestamos {
 
     private static void ordenaTitulosPorCantidad(int[] contador, String[] titulos, int topeTitulos){
         for (int i = 0; i < topeTitulos; i++){
-            for (int j = 0; j < topeTitulos; j++){
-                                
+            for (int j = 0; j < topeTitulos-i-1; j++){
+                boolean seCambian = false;
+                if (contador[j] < contador[j+1]){
+                    seCambian = true;                   
+                } else if (contador[j] == contador[j+1]){
+                    if (titulos[j].compareTo(titulos[j+1]) > 0){
+                        seCambian = true;
+                    }
+                }
+                if (seCambian) {
+                    String tituloAux = titulos[j];
+                    int contadorAux = contador[j];
+                    titulos[j] = titulos[j+1];
+                    titulos[j+1] = tituloAux;
+                    contador[j] = contador[j+1];
+                    contador[j+1] = contadorAux; 
+                } 
             }
         }
     }
@@ -118,8 +133,11 @@ public class RegistroSobreArreglo implements RegistroDePrestamos {
             }
         }
 
-
-
+        // Ahora ordeno los titulos por sus contadores y luego alfabeticamente.
+        ordenaTitulosPorCantidad(contadores, titulos, topeTitulos);
+        
+        int cantTitulos = Math.min(n, topeTitulos);
+        titulos = Arrays.copyOf(titulos, cantTitulos);
         return titulos;
     }
 }
