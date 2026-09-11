@@ -21,13 +21,13 @@ class RegistroSobreArregloTest {
     @Test
     void registrarSuperaCapacidadInicialSinPerderDatos() {
         RegistroSobreArreglo registro = new RegistroSobreArreglo();
-        
-        for (int i = 0; i < 10; i++) {
+    
+        for (int i = 0; i < 20; i++) {
             registro.registrar(crearPrestamo(100 + i, "Libro " + i));
         }
-        
-        assertEquals(10, registro.cantidad());
-        assertEquals("Libro 9", registro.obtener(9).titulo());
+    
+        assertEquals(20, registro.cantidad());
+        assertEquals("Libro 19", registro.obtener(19).titulo());
     }
 
     @Test
