@@ -6,8 +6,10 @@ package tp1;
  */
 public class LineaInvalidaException extends RuntimeException {
     
+    //ATRIBUTOS
     private final int numeroDeLinea;
 
+    //CONSTRUCTORES
     /**
      * LineaInvalidaException es el constructor que asocia la línea problemática 
      * con la causa específica del rechazo.
@@ -19,6 +21,7 @@ public class LineaInvalidaException extends RuntimeException {
         this.numeroDeLinea = numeroDeLinea;
     }
 
+    //METODOS DE COMPORTAMIENTO
     /**
      * numeroDeLinea informa en qué línea exacta del archivo ocurrió el error.
      * @return el número de línea.

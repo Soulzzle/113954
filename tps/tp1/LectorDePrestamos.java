@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class LectorDePrestamos {
 
+    //METODOS DE COMPORTAMIENTO
     /**
      * cargar lee el archivo completo, procesa cada línea aplicando las validaciones 
      * de negocio, y aísla los errores sin interrumpir la lectura general.
