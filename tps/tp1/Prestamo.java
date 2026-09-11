@@ -2,7 +2,6 @@ package tp1;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Objects;
 
 /**
  * Prestamo representa un préstamo de parte de la biblioteca.
@@ -20,10 +19,18 @@ public record Prestamo(LocalDate retiro, int padron, String socio, String isbn, 
      * @throws NullPointerException si retiro, socio, isbn o titulo son nulos.
      */
     public Prestamo{
-        Objects.requireNonNull(retiro, "El dato retiro no puede ser nulo.");
-        Objects.requireNonNull(socio, "El dato socio no puede ser nulo.");
-        Objects.requireNonNull(isbn, "El dato isbn no puede ser nulo.");
-        Objects.requireNonNull(titulo, "El dato titulo no puede ser nulo.");
+        if (retiro == null) {
+            throw new NullPointerException("El dato retiro no puede ser nulo.");
+        }
+        if (socio == null) {
+            throw new NullPointerException("El dato socio no puede ser nulo.");
+        }
+        if (isbn == null) {
+            throw new NullPointerException("El dato isbn no puede ser nulo.");
+        }
+        if (titulo == null) {
+            throw new NullPointerException("El dato titulo no puede ser nulo.");
+        }
 
         if (socio.isBlank()){
             throw new IllegalArgumentException("El dato socio no puede estar vacío.");

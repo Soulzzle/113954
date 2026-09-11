@@ -1,7 +1,6 @@
 package tp1;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * RegistroSobreArreglo implementa el TDA de préstamos con un arreglo redimensionable.
@@ -35,7 +34,9 @@ public class RegistroSobreArreglo implements RegistroDePrestamos {
      */
     @Override 
     public void registrar(Prestamo p){
-        Objects.requireNonNull(p, "El prestamo a registrar no puede ser nulo.");
+        if (p == null) {
+            throw new NullPointerException("El prestamo a registrar no puede ser nulo.");
+        }
 
         if(this.cantidad == this.prestamos.length){
             this.prestamos = Arrays.copyOf(this.prestamos, this.prestamos.length * 2);

@@ -108,7 +108,7 @@ class RegistroSobreArregloTest {
         assertEquals("Libro random", ranking[0]);
     }
 
-    private Prestamo crearPrestamo(int padron, String titulo) {
+    private static Prestamo crearPrestamo(int padron, String titulo) {
         return new Prestamo(HOY, padron, "Socio " + padron, "ISBN-" + titulo.length(), titulo, null);
     }
 }

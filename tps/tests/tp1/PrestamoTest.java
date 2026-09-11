@@ -139,7 +139,7 @@ class PrestamoTest {
         assertEquals(3000, prestamo.multa(RETIRO.plusDays(100)));
     }
 
-    private Prestamo prestamo(LocalDate devolucion) {
+    private static Prestamo prestamo(LocalDate devolucion) {
         return new Prestamo(RETIRO, 12345, "Juan Perez", "978-1", "Algoritmos y programacion", devolucion);
     }
 }
