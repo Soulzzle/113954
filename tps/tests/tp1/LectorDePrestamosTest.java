@@ -13,7 +13,7 @@ class LectorDePrestamosTest {
 
     @Test
     void procesaArchivo() throws IOException {
-        Path archivoPrueba = Paths.get("tp1", "datos", "prestamos.csv");
+        Path archivoPrueba = Paths.get("tps","tp1", "datos", "prestamos.csv");
         
         ResultadoDeCarga resultado = LectorDePrestamos.cargar(archivoPrueba);
 
