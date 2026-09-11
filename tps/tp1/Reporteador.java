@@ -1,8 +1,7 @@
 package tp1;
 
-import java.io.IOException;
-import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Reporteador {
     public static FilaDeSocio[] porSocio(RegistroDePrestamos r, LocalDate corte) {
