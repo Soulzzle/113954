@@ -1,3 +1,4 @@
+package guia1.medio;
 // Contar vocales. Dado un String, contá cuántas vocales tiene (recorré con un for y charAt).
 public class CuentaVocales {
 

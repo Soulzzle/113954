@@ -1,3 +1,4 @@
+package guia1.medio;
 // Máximo de un arreglo. Escribí int maximo(int[] v) y testealo con JUnit (incluí el caso de un solo elemento).
 public class MaximoArreglo {
     

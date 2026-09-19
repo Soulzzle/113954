@@ -1,3 +1,4 @@
+package guia1.facil;
 // Promedio de un arreglo. Dado un double[], calculá el promedio con un for-each.
 public class PromedioArreglo {
     

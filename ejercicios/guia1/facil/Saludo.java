@@ -1,3 +1,4 @@
+package guia1.facil;
 // Hola con tu nombre. Escribí un programa que imprima un saludo con tu nombre y tu legajo.
 public class Saludo {
     public static String saludar(String nombre, int padron){
