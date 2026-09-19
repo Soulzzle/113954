@@ -1,3 +1,4 @@
+package guia1.medio;
 // Clasifica una nota entera en: "insuficiente", "aprobado" o "distinguido".
 // Usa switch expression y lanza una excepción propia si la nota está fuera de 0–10.
 public class ClasificaNotas {

@@ -1,3 +1,4 @@
+package guia1.facil;
 import java.util.Scanner;
 
 // Par o impar. Dado un entero, indicá si es par o impar usando el operador %.
