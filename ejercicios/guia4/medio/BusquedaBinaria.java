@@ -25,4 +25,4 @@ public class BusquedaBinaria {
         return buscarRecursivo(a, objetivo, medio + 1, fin);
     }
 }       // T(n) = T(n/2) + O(1)  ->  T(n/2) = T(n/4) + O(1)  ->  T(n/4) = T(n/8) + O(1)
-        // T(n) = T(n/2^k) + kO(1)  ->  n/2^k = 1 ->  n = 2^k  ->  log(n) = k
+        // T(n) = T(n/2^k) + kO(1)  ->  n/2^k = 1 ->  n = 2^k  ->  log(n) = k  ->  T(n) = T(1) + log(n).1 = log(n)
