@@ -3,7 +3,7 @@ package guia5.medio;
 import java.util.ArrayList;
 import java.util.List;
 
-// Eliminar según condición. Quitá de una List los múltiplos de 3 (removeIf). Test.
+// Eliminar según condición. Quitá de una List los múltiplos de 3 (removeIf).
 public class EliminarMultiplosDe3 {
     
     public List<Integer> eliminaMultiplosDe3(List<Integer> l){
