@@ -22,6 +22,7 @@ public class VectorDinamico<T> {
     public void agregar(T dato){
         considerarRedimension();
         this.datos[this.cantDatos] = dato;
+        this.cantDatos++;
     }
 
     public T obtener(int i){
@@ -33,30 +34,38 @@ public class VectorDinamico<T> {
     }
 
     public void insertar(int i, T dato){
+        analizarIndice(i);
+
         considerarRedimension();
         for (int j = this.cantDatos - 1; j >= i; j--){
             this.datos[j + 1] = this.datos[j];
         }
         this.datos[i] = dato;
+        this.cantDatos++;
     }
 
     private void considerarRedimension(){
         if (this.cantDatos == this.datos.length){
-            Arrays.copyOf(this.datos, this.datos.length * 2);
+            this.datos = Arrays.copyOf(this.datos, this.datos.length * 2);
         }
     }
 
     public T eliminar(int i){
-        if (i < 0 || i >= this.cantDatos){
-            throw new IndexOutOfBoundsException();
-        }
+        analizarIndice(i);
 
         T datoEliminado = this.datos[i];
         for (int j = i; j < this.cantDatos - 1; j++){
             this.datos[j] = this.datos[j + 1];
         }
         this.cantDatos--;
+        this.datos[this.cantDatos] = null;
         return datoEliminado;
+    }
+
+    private void analizarIndice(int i){
+        if (i < 0 || i >= this.cantDatos){
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     public int tamanio(){
