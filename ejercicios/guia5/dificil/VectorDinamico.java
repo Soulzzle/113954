@@ -34,7 +34,7 @@ public class VectorDinamico<T> {
     }
 
     public void insertar(int i, T dato){
-        analizarIndice(i);
+        analizarIndiceInsercion(i);
 
         considerarRedimension();
         for (int j = this.cantDatos - 1; j >= i; j--){
@@ -64,6 +64,12 @@ public class VectorDinamico<T> {
 
     private void analizarIndice(int i){
         if (i < 0 || i >= this.cantDatos){
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    private void analizarIndiceInsercion(int i){
+        if (i < 0 || i > this.cantDatos){
             throw new IndexOutOfBoundsException();
         }
     }

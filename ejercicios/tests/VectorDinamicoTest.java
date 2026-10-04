@@ -39,6 +39,16 @@ class VectorDinamicoTest {
     }
 
     @Test
+    void insertarPermiteIndiceCeroEnVectorVacio() {
+        VectorDinamico<String> vector = new VectorDinamico<>();
+
+        vector.insertar(0, "unico");
+
+        assertEquals(1, vector.tamanio());
+        assertEquals("unico", vector.obtener(0));
+    }
+
+    @Test
     void eliminarDevuelveElementoYDesplazaLosSiguientes() {
         VectorDinamico<Integer> vector = new VectorDinamico<>();
         vector.agregar(10);
