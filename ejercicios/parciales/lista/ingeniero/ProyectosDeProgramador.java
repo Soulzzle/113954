@@ -2,6 +2,7 @@ package parciales.lista.ingeniero;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProyectosDeProgramador {
     private Programador programador;
@@ -16,6 +17,21 @@ public class ProyectosDeProgramador {
     public ProyectosDeProgramador(Proyecto proyecto){
         this.programador = proyecto.getProgramador();
         this.proyectos.add(proyecto);
+    }
+
+    //METODOS GENERALES
+    @Override 
+    public boolean equals(Object o){
+        if (o.equals(null) || o.getClass() != this.getClass()){
+            return false;
+        }
+        ProyectosDeProgramador that = (ProyectosDeProgramador) o;
+        return Objects.equals(this.programador, that.programador);
+    }
+
+    @Override 
+    public int hashCode(){
+        return Objects.hashCode(programador);
     }
 
     //GETTERS

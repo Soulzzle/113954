@@ -1,6 +1,5 @@
 package parciales.lista.ingeniero;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +18,13 @@ public class IngenieroDeSoftware {
         }
 
         //ORDENO POR PUNTAJE DE MAYOR A MENOR
-        
+        programadoresCualificados.sort((o1, o2) -> Double.compare(o1.getPuntajeTotal(), o2.getPuntajeTotal()));
 
         //PASO A RESULTADO LOS 10 PROGRAMADORES MAS CUALIFICADOS
         List<Programador> resultado = new ArrayList<>();
+        for (int i = 0; i < Math.min(CANTIDAD_PROGRAMADORES_RECORD, programadoresCualificados.size()); i++){
+            resultado.add(programadoresCualificados.get(i).getProgramador());
+        }
 
         return resultado;
     }
