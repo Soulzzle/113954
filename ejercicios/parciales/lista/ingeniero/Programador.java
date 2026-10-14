@@ -9,7 +9,6 @@ public class Programador {
     }
 
     //GETTERS
-
     public String getNombre(){
         return this.nombre;
     }
