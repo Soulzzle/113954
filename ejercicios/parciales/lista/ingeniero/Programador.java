@@ -13,7 +13,7 @@ public class Programador {
     //METODOS GENERALES
     @Override 
     public boolean equals(Object o){
-        if (o.equals(null) || o.getClass() != this.getClass()){
+        if (o == null || o.getClass() != this.getClass()){
             return false;
         }
         Programador that = (Programador) o;

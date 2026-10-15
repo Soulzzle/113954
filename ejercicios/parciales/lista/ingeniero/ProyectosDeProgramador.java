@@ -16,13 +16,14 @@ public class ProyectosDeProgramador {
 
     public ProyectosDeProgramador(Proyecto proyecto){
         this.programador = proyecto.getProgramador();
+        this.proyectos = new ArrayList<>();
         this.proyectos.add(proyecto);
     }
 
     //METODOS GENERALES
     @Override 
     public boolean equals(Object o){
-        if (o.equals(null) || o.getClass() != this.getClass()){
+        if (o == null || o.getClass() != this.getClass()){
             return false;
         }
         ProyectosDeProgramador that = (ProyectosDeProgramador) o;
@@ -54,8 +55,8 @@ public class ProyectosDeProgramador {
         return contador;
     }
 
-    public int getPuntajeTotal(){
-        int puntaje = 0;
+    public double getPuntajeTotal(){
+        double puntaje = 0;
         for (Proyecto proyecto : this.proyectos){
             puntaje += proyecto.getPuntaje();
         }
