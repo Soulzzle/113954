@@ -7,6 +7,22 @@ public class Atuendo {
     private String color;
     private double precio;
 
+    //CONSTRUCTORES
+    public Atuendo(String tipo, String color, double precio){
+        if (tipo == null || tipo.isBlank()) {
+            throw new IllegalArgumentException("el atuendo necesita un tipo");
+        }
+        if (color == null || color.isBlank()) {
+            throw new IllegalArgumentException("el atuendo necesita un color");
+        }
+        if (precio < 0) {
+            throw new IllegalArgumentException("el precio no puede ser negativo: " + precio);
+        }
+        this.tipo = tipo;
+        this.color = color;
+        this.precio = precio;
+    }
+
     //METODOS GENERALES
     @Override 
     public boolean equals(Object o){
