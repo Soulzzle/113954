@@ -1,25 +1,32 @@
 package parciales.tda.teclado;
 
+import java.util.Objects;
+
 public class Tecla {
     private char caracter;
-    private boolean esShift;
 
     //CONSTRUCTORES
     public Tecla(char caracter){
         this.caracter = caracter;
     }
 
-    public Tecla(){
-        this.caracter = '\0'; //caracter vacío
-        this.esShift = true;
+    //METODOS GENERALES
+    @Override 
+    public boolean equals(Object o){
+        if (o == null || this.getClass() != o.getClass()){
+            return false;
+        }
+        Tecla that = (Tecla) o;
+        return this.caracter == that.caracter;
+    }
+
+    @Override 
+    public int hashCode(){
+        return Objects.hashCode(this.caracter);
     }
 
     //GETTERS
     public char getCaracter(){
         return this.caracter;
-    }
-
-    public boolean getEsShift(){
-        return this.esShift;
     }
 }
