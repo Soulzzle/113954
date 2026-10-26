@@ -44,8 +44,8 @@ public class Tostadora {
             throw new IllegalArgumentException("numeroRanura debe pertenecer a alguna ranura existente.");
         }
         
-        if (!ranuras[numeroRanura].estaEnUso()){
-            ranuras[numeroRanura].usarRanura();
+        if (!ranuras[numeroRanura - 1].estaEnUso()){
+            ranuras[numeroRanura - 1].usarRanura();
         }
     }
 
@@ -57,8 +57,8 @@ public class Tostadora {
             throw new IllegalArgumentException("numeroRanura debe pertenecer a alguna ranura existente.");
         }
 
-        if (ranuras[numeroRanura].estaEnUso()){
-            ranuras[numeroRanura].desocuparRanura();
+        if (ranuras[numeroRanura - 1].estaEnUso()){
+            ranuras[numeroRanura - 1].desocuparRanura();
         }
     }
 
