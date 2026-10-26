@@ -36,15 +36,27 @@ public class Tostadora {
         }
     }
 
-    public void iniciarTostado(Ranura ranura){
-        int numeroRanura = ranura.getNumero();
+    public void iniciarTostado(int numeroRanura){
+        if (estado == Estado.APAGADO){
+            throw new IllegalStateException("No se puede llamar iniciarTostado si estado vale 'APAGADO'.");
+        }
+        if (numeroRanura < 0 || numeroRanura >= ranuras.length){
+            throw new IllegalArgumentException("numeroRanura debe pertenecer a alguna ranura existente.");
+        }
+        
         if (!ranuras[numeroRanura].estaEnUso()){
             ranuras[numeroRanura].usarRanura();
         }
     }
 
-    public void finalizarTostado(Ranura ranura){
-        int numeroRanura = ranura.getNumero();
+    public void finalizarTostado(int numeroRanura){
+        if (estado == Estado.APAGADO){
+            throw new IllegalStateException("No se puede llamar finalizarTostado si estado vale 'APAGADO'.");
+        }
+        if (numeroRanura < 0 || numeroRanura >= ranuras.length){
+            throw new IllegalArgumentException("numeroRanura debe pertenecer a alguna ranura existente.");
+        }
+
         if (ranuras[numeroRanura].estaEnUso()){
             ranuras[numeroRanura].desocuparRanura();
         }
@@ -63,7 +75,7 @@ public class Tostadora {
     public int contarRanurasLibres(){
         int contador = 0;
         for (Ranura ranura : ranuras){
-            if (ranura.estaEnUso()){
+            if (!ranura.estaEnUso()){
                 contador++;
             }
         }
