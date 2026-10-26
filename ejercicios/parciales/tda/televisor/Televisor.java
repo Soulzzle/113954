@@ -22,7 +22,7 @@ public class Televisor {
 
     //METODOS DE COMPORTAMIENTO
     public void seleccionarEntrada(int numeroDeEntrada){
-        if (numeroDeEntrada < 0 || numeroDeEntrada > entradas.length){
+        if (numeroDeEntrada < 0 || numeroDeEntrada >= entradas.length){
             throw new IllegalArgumentException("numeroDeEntrada no puede ser menor a 0 ni mayor a la cantidad máxima de entradas.");
         }
 
@@ -33,7 +33,7 @@ public class Televisor {
     }
 
     public void activarEntradaHDMI(int numeroDeEntrada){
-        if (numeroDeEntrada < 1 || numeroDeEntrada > entradas.length){
+        if (numeroDeEntrada < 1 || numeroDeEntrada >= entradas.length){
             throw new IllegalArgumentException("numeroDeEntrada no puede ser menor a 1 ni mayor a la cantidad máxima de entradas.");
         }
 
@@ -41,7 +41,7 @@ public class Televisor {
     }
 
     public void desactivarEntradaHDMI(int numeroDeEntrada){
-        if (numeroDeEntrada < 1 || numeroDeEntrada > entradas.length){
+        if (numeroDeEntrada < 1 || numeroDeEntrada >= entradas.length){
             throw new IllegalArgumentException("numeroDeEntrada no puede ser menor a 1 ni mayor a la cantidad máxima de entradas.");
         }
 

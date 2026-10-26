@@ -15,6 +15,7 @@ public class EntradaCable extends Entrada {
         super();
         this.canalActual = 1;
         this.canalesDisponibles = canalesDisponibles;
+        this.activarEntrada();
     }
 
     //METODOS DE COMPORTAMIENTO
