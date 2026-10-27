@@ -83,10 +83,19 @@ public class Tren {
         return vagones;
     }
 
+    public double getLongitudTotal(){
+        double longitud = 0;
+        for (int i = 0; i < getCantidadDeVagones(); i++){
+            longitud += vagones[i].getLongitud();
+        }
+
+        return longitud;
+    }
+
     public int getCapacidadTotalPasajeros(){
         int capacidad = 0;
-        for (Vagon vagon : vagones){
-            capacidad += vagon.getCapacidadDePasajeros();
+        for (int i = 0; i < getCantidadDeVagones(); i++){
+            capacidad += vagones[i].getCapacidadDePasajeros();
         }
 
         return capacidad;
@@ -94,8 +103,8 @@ public class Tren {
     
     public int getCapacidadRestantePasajeros(){
         int capacidad = 0;
-        for (Vagon vagon : vagones){
-            capacidad += vagon.getCapacidadDePasajerosRestante();
+        for (int i = 0; i < getCantidadDeVagones(); i++){
+            capacidad += vagones[i].getCapacidadDePasajerosRestante();
         }
 
         return capacidad;
@@ -103,8 +112,8 @@ public class Tren {
 
     public double getCapacidadTotalCarga(){
         int capacidad = 0;
-        for (Vagon vagon : vagones){
-            capacidad += vagon.getCapacidadDeCarga();
+        for (int i = 0; i < getCantidadDeVagones(); i++){
+            capacidad += vagones[i].getCapacidadDeCarga();
         }
 
         return capacidad;
@@ -112,8 +121,8 @@ public class Tren {
 
     public double getCapacidadRestanteCarga(){
         int capacidad = 0;
-        for (Vagon vagon : vagones){
-            capacidad += vagon.getCapacidadDeCargaRestante();
+        for (int i = 0; i < getCantidadDeVagones(); i++){
+            capacidad += vagones[i].getCapacidadDeCargaRestante();
         }
 
         return capacidad;
