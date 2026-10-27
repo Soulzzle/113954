@@ -13,6 +13,50 @@ public class Tren {
         this.vagones = vagones;
     }
 
+    //METODOS DE COMPORTAMIENTO
+    public void agregarVagon(Vagon vagon){
+        if (vagon == null){
+            throw new IllegalArgumentException("vagon no puede valer null.");
+        }
+
+        int indice = getCantidadDeVagones();
+        if (indice == vagones.length){
+            throw new IllegalStateException("vagones ya está en su máxima capacidad.");
+        }
+
+        vagones[indice] = vagon;
+    }
+
+    public Vagon quitarVagon(int posicionDeVagon){
+        if (posicionDeVagon < 0 || posicionDeVagon >= getCantidadDeVagones()){
+            throw new IllegalArgumentException("posicionDeVagon tiene que ser mayor a 0 y menor a la cantidad de vagones.");
+        }
+
+        Vagon vagonQuitado = vagones[posicionDeVagon];
+        for (int i = posicionDeVagon; i < getCantidadDeVagones() - 1; i++){
+            vagones[i] = vagones[i + 1];
+        }
+
+        return vagonQuitado;
+    }
+
+    public void agregarCarga(double carga){
+        if (carga > getCapacidadRestanteCarga()){
+            throw new IllegalArgumentException("carga no puede ser mayor a la capacidad de carga restante del tren.");
+        }
+
+        for (int i = 0; i < getCantidadDeVagones() && carga > 0; i++){
+            double capacidadDeCargaRestante = vagones[i].getCapacidadDeCargaRestante();
+            if (carga > capacidadDeCargaRestante){
+                vagones[i].agregarCarga(capacidadDeCargaRestante);
+                carga -= capacidadDeCargaRestante;
+            } else {
+                vagones[i].agregarCarga(carga);
+                carga -= carga;
+            }
+        }
+    }
+
     //GETTERS
     public Vagon[] getVagones(){
         return vagones;
