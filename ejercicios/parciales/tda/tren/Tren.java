@@ -36,6 +36,7 @@ public class Tren {
         for (int i = posicionDeVagon; i < getCantidadDeVagones() - 1; i++){
             vagones[i] = vagones[i + 1];
         }
+        vagones[getCantidadDeVagones() - 1] = null;
 
         return vagonQuitado;
     }
@@ -149,7 +150,7 @@ public class Tren {
     }
 
     public double getCapacidadTotalCarga(){
-        int capacidad = 0;
+        double capacidad = 0;
         for (int i = 0; i < getCantidadDeVagones(); i++){
             capacidad += vagones[i].getCapacidadDeCarga();
         }
@@ -158,7 +159,7 @@ public class Tren {
     }
 
     public double getCapacidadRestanteCarga(){
-        int capacidad = 0;
+        double capacidad = 0;
         for (int i = 0; i < getCantidadDeVagones(); i++){
             capacidad += vagones[i].getCapacidadDeCargaRestante();
         }

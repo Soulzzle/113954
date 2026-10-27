@@ -51,7 +51,7 @@ public class Vagon {
             throw new IllegalArgumentException("Los pasajeros quitados no pueden ser mayor a la cantidad de pasajeros disponible.");
         }
 
-        this.carga -= carga;
+        this.pasajeros -= pasajeros;
     }
 
     //GETTERS
