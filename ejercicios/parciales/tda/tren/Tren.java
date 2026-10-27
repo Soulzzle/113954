@@ -78,6 +78,44 @@ public class Tren {
         }
     }
 
+    public void quitarCarga(double carga){
+        if (carga > getCapacidadTotalCarga() - getCapacidadRestanteCarga()){
+            throw new IllegalArgumentException("carga no puede ser mayor a la carga total del tren.");
+        }
+
+        int i = 0;
+        while (i < getCantidadDeVagones() && carga > 0){
+            double cargaDeVagon = vagones[i].getCarga();
+            if (carga > cargaDeVagon){
+                vagones[i].quitarCarga(cargaDeVagon);
+                carga -= cargaDeVagon;
+            } else {
+                vagones[i].quitarCarga(carga);
+                carga -= carga;
+            }
+            i++;
+        }
+    }
+
+    public void quitarPasajeros(int pasajeros){
+        if (pasajeros > getCapacidadTotalPasajeros() - getCapacidadRestantePasajeros()){
+            throw new IllegalArgumentException("pasajeros no puede ser mayor a la cantidad de pasajeros totales del tren.");
+        }
+
+        int i = 0;
+        while (i < getCantidadDeVagones() && pasajeros > 0){
+            int pasajerosDeVagon = vagones[i].getPasajeros();
+            if (pasajeros > pasajerosDeVagon){
+                vagones[i].quitarPasajeros(pasajerosDeVagon);
+                pasajeros -= pasajerosDeVagon;
+            } else {
+                vagones[i].quitarPasajeros(pasajeros);
+                pasajeros -= pasajeros;
+            }
+            i++;
+        }
+    }
+
     //GETTERS
     public Vagon[] getVagones(){
         return vagones;
