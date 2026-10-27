@@ -45,7 +45,8 @@ public class Tren {
             throw new IllegalArgumentException("carga no puede ser mayor a la capacidad de carga restante del tren.");
         }
 
-        for (int i = 0; i < getCantidadDeVagones() && carga > 0; i++){
+        int i = 0;
+        while (i < getCantidadDeVagones() && carga > 0){
             double capacidadDeCargaRestante = vagones[i].getCapacidadDeCargaRestante();
             if (carga > capacidadDeCargaRestante){
                 vagones[i].agregarCarga(capacidadDeCargaRestante);
@@ -54,6 +55,26 @@ public class Tren {
                 vagones[i].agregarCarga(carga);
                 carga -= carga;
             }
+            i++;
+        }
+    }
+
+    public void agregarPasajeros(int pasajeros){
+        if (pasajeros > getCapacidadRestantePasajeros()){
+            throw new IllegalArgumentException("pasajeros no puede ser mayor a la capacidad de pasajeros restante del tren.");
+        }
+
+        int i = 0;
+        while (i < getCantidadDeVagones() && pasajeros > 0){
+            int capacidadDePasajerosRestante = vagones[i].getCapacidadDePasajerosRestante();
+            if (pasajeros > capacidadDePasajerosRestante){
+                vagones[i].agregarPasajeros(capacidadDePasajerosRestante);
+                pasajeros -= capacidadDePasajerosRestante;
+            } else {
+                vagones[i].agregarPasajeros(pasajeros);
+                pasajeros -= pasajeros;
+            }
+            i++;
         }
     }
 
