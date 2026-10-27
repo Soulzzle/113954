@@ -36,5 +36,35 @@ public class Tren {
         return capacidad;
     }
 
-    
+    public double getCapacidadTotalCarga(){
+        int capacidad = 0;
+        for (Vagon vagon : vagones){
+            capacidad += vagon.getCapacidadDeCarga();
+        }
+
+        return capacidad;
+    }
+
+    public double getCapacidadRestanteCarga(){
+        int capacidad = 0;
+        for (Vagon vagon : vagones){
+            capacidad += vagon.getCapacidadDeCargaRestante();
+        }
+
+        return capacidad;
+    }
+
+    public int getCantidadDeVagones(){
+        for (int i = 0; i < vagones.length; i++){
+            if (vagones[i] == null){
+                return i;
+            }
+        }
+
+        return vagones.length;
+    }
+
+    public int getCantidadMaximaDeVagones(){
+        return vagones.length;
+    }
 }
